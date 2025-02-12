@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const OrderRujakSchema = new mongoose.Schema({
   rujak: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Rujak',   
+    ref: 'Rujak',
     required: true,
   },
   jumlah: {
@@ -11,21 +11,22 @@ const OrderRujakSchema = new mongoose.Schema({
     required: true,
     min: 1,
   },
-  totalHarga: {
-    type: Number,
-    required: true,
-  },
   status: {
     type: String,
-    enum: ['pending', 'selesai'],  
+    enum: ['pending', 'selesai'],
     default: 'pending',
+  },
+  cara_transaksi: {
+    type: String,
+    enum: ['Tunai', 'Transfer', 'E-Wallet'],
+    required: true,
   },
   tanggalPesan: {
     type: Date,
     default: Date.now,
   },
 });
- 
+
 const OrderRujak = mongoose.models.OrderRujak || mongoose.model('OrderRujak', OrderRujakSchema);
 
 module.exports = OrderRujak;

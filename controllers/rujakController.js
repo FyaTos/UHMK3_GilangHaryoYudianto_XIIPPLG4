@@ -23,8 +23,8 @@ exports.getRujakById = async (req, res) => {
  
 exports.createRujak = async (req, res) => {
   try {
-    const { namaRujak, bahan, harga, tingkatPedas } = req.body;
-    const newRujak = new Rujak({ namaRujak, bahan, harga, tingkatPedas });
+    const { namaRujak, bahan, harga, jenisRujak, stok   } = req.body;
+    const newRujak = new Rujak({ namaRujak, bahan, harga,  jenisRujak, stok});
     await newRujak.save();
     res.status(201).json({ message: 'Rujak berhasil ditambahkan!', data: newRujak });
   } catch (error) {

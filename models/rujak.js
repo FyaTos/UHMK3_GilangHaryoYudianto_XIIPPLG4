@@ -9,7 +9,7 @@ const RujakSchema = new mongoose.Schema({
   jenisRujak: {
     type: String,
     required: true,
-    enum: ['Buah', 'Sayur', 'Campur'], // Pilihan jenis rujak
+    enum: ['Buah', 'Sayur', 'Campur'], 
   },
   bahan: {
     type: [String],  
@@ -19,6 +19,12 @@ const RujakSchema = new mongoose.Schema({
     type: Number,
     required: true,
     min: 1000,  
+  },
+  stok: {
+    type: Number,
+    required: true,
+    min: 0,  
+    default: 10, 
   },
   tanggalDibuat: {
     type: Date,
